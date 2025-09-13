@@ -1,0 +1,30 @@
+name: 'b2broker_project'
+version: '1.0.0'
+
+profile: "b2broker_project"
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:     
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  b2broker_project:
+    +materialized: 'seed' 
+
+models:
+  b2broker_project:
+    staging:      
+      +materialized: view
+
+    marts:
+      dim:         
+        +materialized: table
+      fact:      
+        +materialized: table
