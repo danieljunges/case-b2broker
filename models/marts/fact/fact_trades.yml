@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: fact_trades
+    description: "Fact table for trades"
+    columns:
+      - name: trade_id
+        description: "Trade identifier"
+        tests:
+          - not_null
+          - unique
+      - name: account_sk
+        description: "Surrogate key linking to dim_account"
+        tests:
+          - not_null
+      - name: client_sk
+        description: "Surrogate key linking to dim_client"
+        tests:
+          - not_null

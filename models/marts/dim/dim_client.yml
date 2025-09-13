@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_client
+    description: "Clean and standardized client dimension"
+    columns:
+      - name: client_sk
+        description: "Surrogate key for the client"
+        tests:
+          - not_null
+          - unique
+      - name: client_id
+        description: "Original client ID"
+        tests:
+          - not_null
+

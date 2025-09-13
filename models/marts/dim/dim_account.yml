@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_account
+    description: "Clean and standardized account dimension"
+    columns:
+      - name: account_sk
+        description: "Surrogate key for the account"
+        tests:
+          - not_null
+          - unique
+      - name: account_id
+        description: "Original account ID"
+        tests:
+          - not_null
+      - name: is_deleted
+        description: "Flag indicating if the account is deleted"
+        tests:
+          - accepted_values:
+              values: [true, false]
