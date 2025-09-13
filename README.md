@@ -1,7 +1,6 @@
 # Multi-Asset Brokerage Trading Analytics
 
-**Author:** [Your Name]  
-**Date:** [Date]  
+Daniel Junges | eudanieljunges@gmail.com
 
 ---
 
