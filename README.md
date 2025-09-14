@@ -114,7 +114,6 @@ All dashboards **filter dynamically** by client, account, and date ranges.
 ## **Architecture**
 
 
-## **How to Run**
 
 ## **How to Run**
 
@@ -156,6 +155,7 @@ To install dbt packages and test connections and environment.
 ```bash
 dbt init
 ```
+**Note:** If the terminal prompts for PostgreSQL credentials during initialization, use the connection details that were shared via Telegram.
 
 5. **Run seeds (loads CSV data into the database)**
 ```bash
@@ -171,11 +171,43 @@ dbt build
 ```bash
 dbt test
 ```
+
+## Notes
+   - Follow the directory structure for models, seeds, and tests to avoid errors.
 8. **Connect to Power BI**
 
 
+## **Architecture**
+
 --
-## Notes
-   - Follow the directory structure for models, seeds, and tests to avoid errors.
+
+# Analysis Output
+
+**Client Performance & Profitability
+The platform's profitability is highly concentrated among a small number of clients. The Top 5 Clients by Net PnL chart clearly shows that client C0038 is the top performer, with a net PnL of over $339K. This indicates that a significant portion of the total profit comes from a handful of high-volume or highly successful traders. This presents a potential risk; any change in their trading behavior could have a large impact on overall performance.
+<img width="584" height="451" alt="image" src="https://github.com/user-attachments/assets/a559f401-4f41-4b22-99eb-6a2b85c04e0b" />
+
+
+**Trade Characteristics & Volume**
+The Trade Volume Share: Buy vs Sell pie chart reveals that trading activity is nearly balanced between buy and sell orders. Buy volume is $900.00 (49.34%), and sell volume is $924.00 (50.66%). This balanced distribution suggests a healthy, two-sided market with active participants on both long and short positions, rather than a strong one-way bias.
+<img width="592" height="591" alt="image" src="https://github.com/user-attachments/assets/2f15bc0f-200b-4a9f-9a6c-7afc8ac5185b" />
+
+
+**Asset Trading Behavior**
+The Average Trade Size by Symbol chart highlights significant differences in the value of trades for various assets. GER40 and US30 have the largest average trade sizes, at $67.93 and $58.67, respectively. This suggests that traders are either more confident or are using larger capital when trading these specific index CFDs.
+<img width="600" height="285" alt="image" src="https://github.com/user-attachments/assets/5eb3233c-2651-40f8-989c-b11103d1fb96" />
+
+
+In contrast, assets like EUR/USD and USD/JPY have some of the lowest average trade sizes, at $30.50 and $30.84. While these are often highly liquid pairs, their lower average trade size may indicate that traders are taking smaller positions or are being more cautious with them.
+
    - Ensure all environment variables are correctly set before running dbt.
    - Monetary values in dashboards are in USD.
+
+# Summary Insights
+
+- Profitability is highly concentrated. A significant portion of the total profit comes from a handful of clients. The top client, C0038, is a major contributor, making the platform's overall performance heavily reliant on a small group of high-volume traders.
+
+- Market activity is well-balanced. The even split between buy and sell volumes ($900.00 vs. $924.00) suggests a healthy and active market. This indicates that traders are actively participating on both sides of the market, a positive sign for liquidity.
+
+- Trading behavior varies by asset. The average trade size is not consistent across all symbols. Traders are committing larger capital on instruments like GER40 and US30, which may indicate greater confidence or a preference for trading indices. Conversely, forex pairs like EUR/USD show a lower average trade size, suggesting traders might be taking more cautious positions on those assets.
+
