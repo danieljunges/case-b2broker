@@ -36,7 +36,7 @@ The data was transformed into the following **dbt models**:
 - `dim_symbol` – normalized symbols using `symbols_ref`.
 
 ### **Facts**
-- `fact_trades` – detailed trade information, enriched with trade duration and standardized symbols.  
+- `fact_trades` – detailed trade information, including net PnL, trade duration, standardized symbols, and client/account references, with uniqueness ensured per trade ID.
 - `fact_account_eod` – daily account metrics including balances, equity, and floating PnL.  
 - `f_client_performance_daily` – aggregated client performance metrics for reporting.
 
