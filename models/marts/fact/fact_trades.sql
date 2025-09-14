@@ -1,7 +1,6 @@
 {{ config(materialized='table') }}
 
 with trades_base as (
-
     select
         t.trade_id,
         t.account_id,
@@ -24,10 +23,9 @@ with trades_base as (
 ),
 
 joined_dims as (
-
     select
         tb.trade_id,
-        c.client_sk,
+        coalesce(c.client_sk, a.client_sk) as client_sk, 
         a.account_sk,
         s.symbol_sk,
         tb.platform,
@@ -51,8 +49,13 @@ joined_dims as (
 ),
 
 deduplicated as (
-    select distinct *
-    from joined_dims
+    select *
+    from (
+        select *,
+               row_number() over (partition by trade_id order by close_time desc) as rn
+        from joined_dims
+    ) t
+    where rn = 1
 )
 
 select
