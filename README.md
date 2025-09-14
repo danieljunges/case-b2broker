@@ -105,25 +105,77 @@ All dashboards **filter dynamically** by client, account, and date ranges.
 ## **Technologies Used**
 
 - **dbt (Data Build Tool):** Transformation and modeling  
-- **PostgreSQL:** Data storage and querying  
+- **PostgreSQL on Azure Cloud:** Data storage & querying
 - **Power BI:** Dashboard and reporting  
-- **Python / Jupyter Notebook:** Optional analysis  
+- **Python / Jupyter Notebook:** Analysis and scripting  
 
 ---
 
 ## **Architecture**
 
-```text
-Raw Data (CSV)
-       |
-       v
- Staging Models (stg_*)
-       |
-       v
- Dimension & Fact Models (dim_*, fact_*)
-       |
-       v
-     dbt Tests (uniqueness, not null, business logic)
-       |
-       v
-   Power BI Dashboard & Analytics
+
+## **How to Run**
+
+## **How to Run**
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/<your_username>/case-b2broker.git
+cd case=b2broker
+```
+
+2. **Install dbt**
+```bash
+pip install dbt-postgres
+```
+
+3. **Configure Environment Variables (Secure)**
+Use VS Code or Windows PowerShell to set the environment with the following content:
+```bash
+$env:DBT_HOST="your_host"
+$env:DBT_USER="your_user"
+$env:DBT_PASSWORD="your_password"
+$env:DBT_DB="your_database"
+$env:DBT_PORT="5432"
+$env:DBT_SCHEMA="public"
+```
+For security reasons, all the informations were sent by Telegram to Aidana.
+
+
+3. **Initialize dbt project**
+```bash
+dbt deps
+dbt debug
+```
+<img width="504" height="207" alt="image" src="https://github.com/user-attachments/assets/24f9bad4-e88d-45b1-97e8-c0dd401f5849" />
+
+To install dbt packages and test connections and environment.
+
+4. **Initialize dbt project (if not done)**
+```bash
+dbt init
+```
+
+5. **Run seeds (loads CSV data into the database)**
+```bash
+dbt seeds
+```
+
+6. **Build the project (staging models, dimensions, facts and tests)**
+```bash
+dbt build
+```
+
+7. **Run tests separately (optional)**
+```bash
+dbt test
+```
+8. **Connect to Power BI**
+
+
+--
+## Notes
+   - Follow the directory structure for models, seeds, and tests to avoid errors.
+   - Ensure all environment variables are correctly set before running dbt.
+   - Monetary values in dashboards are in USD.
