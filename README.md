@@ -4,7 +4,7 @@ Daniel Junges | eudanieljunges@gmail.com
 
 ---
 
-## **Project Overview**
+## **Project Overview and Approach**
 
 This project demonstrates an end-to-end analytics engineering workflow for a global multi-asset brokerage. The objective is to transform raw trading and account data into **clean, analysis-ready data marts** and produce actionable insights for management.  
 
@@ -106,8 +106,10 @@ All dashboards **filter dynamically** by client, account, and date ranges.
 
 - **dbt (Data Build Tool):** Transformation and modeling  
 - **PostgreSQL on Azure Cloud:** Data storage & querying
-- **Power BI:** Dashboard and reporting  
-- **Python / Jupyter Notebook:** Analysis and scripting  
+- **Power BI:** Dashboard and reporting
+
+<img width="1392" height="475" alt="image" src="https://github.com/user-attachments/assets/7c1e263e-e481-476e-beb5-2dd9155b0fbc" />
+
 
 ---
 
@@ -172,29 +174,34 @@ dbt build
 dbt test
 ```
 
-## Notes
-   - Follow the directory structure for models, seeds, and tests to avoid errors.
 8. **Connect to Power BI**
 
+## Notes
+   - Follow the directory structure for models, seeds, and tests to avoid errors.
 
-## **Architecture**
+### **Architecture**
 
---
+<img width="1682" height="311" alt="image" src="https://github.com/user-attachments/assets/bb59da87-1a6d-4b5c-b7ac-880b4ab1bf3f" />
+
+
 
 # Analysis Output
 
-**Client Performance & Profitability
+**Client Performance & Profitability**
 The platform's profitability is highly concentrated among a small number of clients. The Top 5 Clients by Net PnL chart clearly shows that client C0038 is the top performer, with a net PnL of over $339K. This indicates that a significant portion of the total profit comes from a handful of high-volume or highly successful traders. This presents a potential risk; any change in their trading behavior could have a large impact on overall performance.
+
 <img width="584" height="451" alt="image" src="https://github.com/user-attachments/assets/a559f401-4f41-4b22-99eb-6a2b85c04e0b" />
 
 
 **Trade Characteristics & Volume**
 The Trade Volume Share: Buy vs Sell pie chart reveals that trading activity is nearly balanced between buy and sell orders. Buy volume is $900.00 (49.34%), and sell volume is $924.00 (50.66%). This balanced distribution suggests a healthy, two-sided market with active participants on both long and short positions, rather than a strong one-way bias.
+
 <img width="592" height="591" alt="image" src="https://github.com/user-attachments/assets/2f15bc0f-200b-4a9f-9a6c-7afc8ac5185b" />
 
 
 **Asset Trading Behavior**
 The Average Trade Size by Symbol chart highlights significant differences in the value of trades for various assets. GER40 and US30 have the largest average trade sizes, at $67.93 and $58.67, respectively. This suggests that traders are either more confident or are using larger capital when trading these specific index CFDs.
+
 <img width="600" height="285" alt="image" src="https://github.com/user-attachments/assets/5eb3233c-2651-40f8-989c-b11103d1fb96" />
 
 
@@ -211,3 +218,24 @@ In contrast, assets like EUR/USD and USD/JPY have some of the lowest average tra
 
 - Trading behavior varies by asset. The average trade size is not consistent across all symbols. Traders are committing larger capital on instruments like GER40 and US30, which may indicate greater confidence or a preference for trading indices. Conversely, forex pairs like EUR/USD show a lower average trade size, suggesting traders might be taking more cautious positions on those assets.
 
+# Challenges Faced
+
+During the development of the analytics workflow, several challenges were encountered and addressed:
+
+**Data Quality Issues**
+- Some trades had missing client_external_id or account_sk, requiring careful linkage between accounts and clients to maintain accuracy. Duplicate trade_id and null values were identified through dbt tests, and staging transformations were applied to handle these cases.
+
+**Inconsistent Symbol Naming**
+- Trade symbols from different platforms were inconsistent in format and casing. reference table **(symbols_ref)** was used to normalize symbols to a standardized **std_symbol**, ensuring consistent aggregation in reports.
+
+**Currency & Sign Conventions**
+- Raw PnL and commission values had to be standardized in USD. A clear sign convention was defined to calculate Net PnL correctly, avoiding misinterpretation of positive vs negative trades.
+
+**Dashboard Design & Metrics Calculation**
+- Some derived metrics (e.g., total trade size, Net PnL per client or symbol) required careful calculation using DAX in Power BI. Ensuring meaningful visualizations while keeping them concise on a single page dashboard was a balancing challenge.
+
+**Environment & Deployment**
+- Handling dbt profiles securely with environment variables was essential to avoid exposing credentials.
+- Ensuring the project could be run reproducibly on another machine required detailed “How to Run” instructions.
+
+**Outcome:** Each challenge was addressed with a combination of dbt transformations, testing, and clear documentation, resulting in a robust, reproducible, and insightful analytics workflow ready for management reporting.
