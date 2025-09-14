@@ -149,13 +149,7 @@ dbt debug
 
 To install dbt packages and test connections and environment.
 
-4. **Initialize dbt project (if not done)**
-```bash
-dbt init
-```
-**Note:** If the terminal prompts for PostgreSQL credentials during initialization, use the connection details that were shared via Telegram.
-
-5. **Run the project (staging models, dimensions and facts) - option 1**
+4. **Run the project (staging models, dimensions and facts) - option 1**
 ```bash
 dbt run
 ```
@@ -164,12 +158,12 @@ Or  **Build the project (staging models, dimensions, facts and tests) - option 2
 dbt build
 ```
 
-6. **Run tests separately (optional)**
+5. **Run tests separately (optional)**
 ```bash
 dbt test
 ```
 
-7. **Connect to Power BI**
+6. **Connect to Power BI**
 
 ## Notes
    - Follow the directory structure for models, seeds, and tests to avoid errors.
