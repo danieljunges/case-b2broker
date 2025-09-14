@@ -1,4 +1,4 @@
-# Multi-Asset Brokerage Trading Analytics
+# B2Broker Analytics Engineering Case
 
 Daniel Junges | eudanieljunges@gmail.com
 
@@ -6,7 +6,7 @@ Daniel Junges | eudanieljunges@gmail.com
 
 ## **Project Overview and Approach**
 
-This project demonstrates an end-to-end analytics engineering workflow for a global multi-asset brokerage. The objective is to transform raw trading and account data into **clean, analysis-ready data marts** and produce actionable insights for management.  
+This case study was developed for **B2Broker** to demonstrate an **end-to-end analytics engineering workflow**. The goal was to transform raw brokerage data into **trusted**, **analysis-ready data marts** that enable reporting on client performance, trading activity, and account health.
 
 The project addresses the following business questions:  
 
@@ -56,7 +56,8 @@ Data quality is ensured using **dbt tests**:
 
 - **Uniqueness:** Ensures unique keys for `trade_id`, `account_sk`, `client_sk`.  
 - **Not Null:** Verifies that critical fields are not null.  
-- **Accepted Values / Business Logic:** Custom tests to validate segment names, jurisdictions, and account status.  
+- **Accepted Values / Business Logic:** Tests to validate segment names, jurisdictions, and account status.
+- **Custom Business Logic Test**: Validate that all trades have **positive volume**.
 
 All test failures are logged and provide evidence for data inconsistencies.
 
@@ -159,22 +160,21 @@ dbt init
 ```
 **Note:** If the terminal prompts for PostgreSQL credentials during initialization, use the connection details that were shared via Telegram.
 
-5. **Run seeds (loads CSV data into the database)**
+5. **Run the project (staging models, dimensions and facts) - option 1**
 ```bash
-dbt seeds
+dbt run
 ```
-
-6. **Build the project (staging models, dimensions, facts and tests)**
+Or  **Build the project (staging models, dimensions, facts and tests) - option 2**
 ```bash
 dbt build
 ```
 
-7. **Run tests separately (optional)**
+6. **Run tests separately (optional)**
 ```bash
 dbt test
 ```
 
-8. **Connect to Power BI**
+7. **Connect to Power BI**
 
 ## Notes
    - Follow the directory structure for models, seeds, and tests to avoid errors.
