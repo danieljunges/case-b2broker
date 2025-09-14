@@ -21,13 +21,8 @@ The project addresses the following business questions:
 
 The raw datasets provided (CSV format) include:  
 
-| Table | Description | Key Fields |
-|-------|------------|------------|
-| `trades_raw` | Trade records | trade_id, platform, account_id, client_external_id, symbol, side, volume, open_time, close_time, open_price, close_price, commission, realized_pnl, book_flag, counterparty, quote_currency, status |
-| `accounts_raw` | Trading account registry | account_id, platform, client_id, base_currency, created_at, closed_at, salesforce_account_id, is_system, is_deleted |
-| `clients_raw` | Client master | client_id, client_external_id, jurisdiction, segment, created_at |
-| `balances_eod_raw` | End-of-day balances | account_id, platform, date, balance, equity, floating_pnl, credit, margin_level |
-| `symbols_ref` | Symbol normalization reference | platform, platform_symbol, std_symbol, asset_class, quote_currency, tick_value |
+<img width="1559" height="736" alt="image" src="https://github.com/user-attachments/assets/f888e50e-20bc-416a-9079-d11d2e7758d3" />
+
 
 ---
 
