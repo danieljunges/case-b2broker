@@ -96,6 +96,9 @@ A **Power BI dashboard** was built to visualize key metrics:
 
 All dashboards **filter dynamically** by client, account, and date ranges.
 
+<img width="1289" height="716" alt="image" src="https://github.com/user-attachments/assets/d8e93684-9da2-4935-9694-2772ca6a6d8a" />
+
+
 ---
 
 ## **Technologies Used**
