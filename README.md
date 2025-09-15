@@ -220,5 +220,3 @@ During the development of the analytics workflow, several challenges were encoun
   
 
 **Outcome:** Each challenge was addressed with a combination of dbt transformations, testing, and clear documentation, resulting in a robust, reproducible, and insightful analytics workflow ready for management reporting.
-
-Daniel Junges
