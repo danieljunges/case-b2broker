@@ -143,7 +143,7 @@ $env:DBT_DB="your_database"
 $env:DBT_PORT="5432"
 $env:DBT_SCHEMA="public"
 ```
-For security reasons, all the informations were sent by Telegram to Aidana.
+For security reasons, all the information was sent to Aidana via Telegram.
 
 
 3. **Initialize dbt project**
