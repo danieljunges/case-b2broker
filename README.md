@@ -184,12 +184,13 @@ You can now explore the dashboards, visuals, and reports using the available fac
 **Market & Asset Behavior**
   - **Trade Volume:** The analysis shows a well-balanced market with a total volume of $81,14K. The distribution between buy and sell orders is nearly even, which suggests a healthy, two-sided market with active participation on both sides, a positive sign for liquidity.
   - **Average Trade Size:** Shows significant differences in trade value across various assets. GER40 and US30 have the largest average trade sizes, at **$67.93** and **$90.94** respectively. This suggests traders may be using larger capital or feel more confident when trading these specific index CFDs.
-  - **Loss per Symbol:** Shows that while some assets are profitable, others contribute to the platform's overall loss. Symbols like **GBP/USD** ($-18,62K) and **ETHUSD** ($-80,63K) show significant losses.
+  - **Loss per Symbol:** Shows that while some assets are profitable, others contribute to the platform's overall loss. Symbols like **WTI** ($-184,88k) and **US500** ($-179,76K) show significant losses.
 
 **Risk and Compliance Insights**
  - **Equity Dradown:** The Clients with the largest equity drawdown chart is a crucial risk indicator. It identifies clients with the most significant capital losses. The top clients by drawdown are **C0028** ($1.62M), **C0000** ($1.58M), and **C0025** ($1.58M), which signals significant **risk** in these accounts.
 
-<img width="1195" height="666" alt="image" src="https://github.com/user-attachments/assets/c79bf6e5-77ad-4e37-94fe-b76e6da9c1b5" />
+<img width="1312" height="731" alt="image" src="https://github.com/user-attachments/assets/da48117e-818f-492d-9963-e1eb5f089b1e" />
+
 
 
 
