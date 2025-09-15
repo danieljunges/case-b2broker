@@ -189,7 +189,8 @@ You can now explore the dashboards, visuals, and reports using the available fac
 **Risk and Compliance Insights**
  - **Equity Dradown:** The Clients with the largest equity drawdown chart is a crucial risk indicator. It identifies clients with the most significant capital losses. The top clients by drawdown are **C0028** ($1.62M), **C0000** ($1.58M), and **C0025** ($1.58M), which signals significant **risk** in these accounts.
 
-<img width="1188" height="658" alt="image" src="https://github.com/user-attachments/assets/a2c573d7-edf7-4e7d-869a-f54b789e41f0" />
+<img width="1291" height="706" alt="image" src="https://github.com/user-attachments/assets/7fe1f6fd-1258-4c22-8834-1c73367aae36" />
+
 
 
 
