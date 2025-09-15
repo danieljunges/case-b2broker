@@ -182,14 +182,14 @@ You can now explore the dashboards, visuals, and reports using the available fac
 # Analysis Output
 
 **Market & Asset Behavior**
-  - **Trade Volume:** The analysis shows a well-balanced market with a total volume of $81,14K. The distribution between buy and sell orders is nearly even, which suggests a healthy, two-sided market with active participation on both sides, a positive sign for liquidity.
+  - **Trade Volume:** The analysis shows a well-balanced market with a total volume of $69.54K. The distribution between buy and sell orders is nearly even, which suggests a healthy, two-sided market with active participation on both sides, a positive sign for liquidity.
   - **Average Trade Size:** Shows significant differences in trade value across various assets. GER40 and US30 have the largest average trade sizes, at **$67.93** and **$90.94** respectively. This suggests traders may be using larger capital or feel more confident when trading these specific index CFDs.
-  - **Profit/Loss per Symbol:** Shows that while some assets are profitable, others contribute to the platform's overall loss. Symbols like **WTI** ($-184,88k) and **US500** ($-179,76K) show significant losses.
+  - **Profit/Loss per Symbol:** Shows that while some assets are profitable, others contribute to the platform's overall loss. Symbols like **WTI** ($-184.88k) and **US500** ($-179.76K) show significant losses.
 
 **Risk and Compliance Insights**
  - **Equity Dradown:** The Clients with the largest equity drawdown chart is a crucial risk indicator. It identifies clients with the most significant capital losses. The top clients by drawdown are **C0028** ($1.62M), **C0000** ($1.58M), and **C0025** ($1.58M), which signals significant **risk** in these accounts.
 
-<img width="1184" height="661" alt="image" src="https://github.com/user-attachments/assets/49fd8b10-343a-4dad-ba53-fc1f6879a624" />
+<img width="1286" height="724" alt="image" src="https://github.com/user-attachments/assets/abc83f08-9405-4667-aca4-0eba76205ad4" />
 
 
 
