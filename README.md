@@ -74,27 +74,20 @@ All test failures are logged and provide evidence for data inconsistencies.
 A **Power BI dashboard** was built to visualize key metrics:
 
 1. **Top Clients by Net PnL**  
-   - **Type:** Table / Bar chart  
    - **X-axis:** Net PnL  
-   - **Y-axis:** Client Name (`dim_client`)  
-   - **Filter:** Top 5 clients  
+   - **Y-axis:** Client Id (`dim_client`)  
 
 2. **Symbol Loss by Symbol**  
-   - **Type:** Bar chart with negative values highlighted in red  
-   - **X-axis:** Symbol (`dim_symbol`)  
-   - **Y-axis:** Loss (realized PnL + commission)
+   - **X-axis:** Loss (realized PnL + commission)
+   - **Y-axis:** Symbol (`dim_symbol`)  
 
 3. **Average Trade Size per Symbol**  
-   - **Type:** Column chart  
    - **X-axis:** Symbol  
    - **Y-axis:** Average trade volume in USD  
 
 4. **Buy vs Sell Distribution**  
-   - **Type:** Pie chart  
    - **Values:** Count of trades  
    - **Legend:** Trade side (`BUY` / `SELL`)  
-
-All dashboards **filter dynamically** by client, account, and date ranges.
 
 <img width="1289" height="716" alt="image" src="https://github.com/user-attachments/assets/d8e93684-9da2-4935-9694-2772ca6a6d8a" />
 
@@ -197,12 +190,12 @@ The Trade Volume Share: Buy vs Sell pie chart reveals that trading activity is n
 
 
 **Asset Trading Behavior**
-The Average Trade Size by Symbol chart highlights significant differences in the value of trades for various assets. GER40 and US30 have the largest average trade sizes, at $67.93 and $58.67, respectively. This suggests that traders are either more confident or are using larger capital when trading these specific index CFDs.
+The Average Trade Size by Symbol chart highlights significant differences in the value of trades for various assets. GER40 and US30 have the largest average trade sizes, at $67.93 and $60.94, respectively. This suggests that traders are either more confident or are using larger capital when trading these specific index CFDs.
 
 <img width="600" height="285" alt="image" src="https://github.com/user-attachments/assets/5eb3233c-2651-40f8-989c-b11103d1fb96" />
 
 
-In contrast, assets like EUR/USD and USD/JPY have some of the lowest average trade sizes, at $30.50 and $30.84. While these are often highly liquid pairs, their lower average trade size may indicate that traders are taking smaller positions or are being more cautious with them.
+In contrast, assets like EUR/USD and USD/JPY have some of the lowest average trade sizes, at $25.65 and $30.50. While these are often highly liquid pairs, their lower average trade size may indicate that traders are taking smaller positions or are being more cautious with them.
 
    - Ensure all environment variables are correctly set before running dbt.
    - Monetary values in dashboards are in USD.
@@ -220,13 +213,10 @@ In contrast, assets like EUR/USD and USD/JPY have some of the lowest average tra
 During the development of the analytics workflow, several challenges were encountered and addressed:
 
 **Data Quality Issues**
-- Some trades had missing client_external_id or account_sk, requiring careful linkage between accounts and clients to maintain accuracy. Duplicate trade_id and null values were identified through dbt tests, and staging transformations were applied to handle these cases.
+- Some trades had missing client_external_id or account_sk, requiring careful linkage between accounts and clients to maintain accuracy. Missing client IDs, duplicate trades, and null values were handled via account-based client mapping, deduplication with **ROW_NUMBER()**, and **COALESCE** logic in staging.
 
 **Inconsistent Symbol Naming**
 - Trade symbols from different platforms were inconsistent in format and casing. reference table **(symbols_ref)** was used to normalize symbols to a standardized **std_symbol**, ensuring consistent aggregation in reports.
-
-**Currency & Sign Conventions**
-- Raw PnL and commission values had to be standardized in USD. A clear sign convention was defined to calculate Net PnL correctly, avoiding misinterpretation of positive vs negative trades.
 
 **Dashboard Design & Metrics Calculation**
 - Some derived metrics (e.g., total trade size, Net PnL per client or symbol) required careful calculation using DAX in Power BI. Ensuring meaningful visualizations while keeping them concise on a single page dashboard was a balancing challenge.
