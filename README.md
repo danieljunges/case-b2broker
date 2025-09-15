@@ -119,7 +119,7 @@ All dashboards **filter dynamically** by client, account, and date ranges.
 
 ```bash
 git clone https://github.com/<your_username>/case-b2broker.git
-cd case=b2broker
+cd case-b2broker
 ```
 
 2. **Install dbt**
@@ -164,6 +164,11 @@ dbt test
 ```
 
 6. **Connect to Power BI**
+- Open the .pbix file in Power BI Desktop.
+- Make sure your data source credentials are correctly set (if prompted).
+- Refresh the data to load the latest tables and facts from the database.
+
+You can now explore the dashboards, visuals, and reports using the available fact and dimension tables.
 
 ## Notes
    - Follow the directory structure for models, seeds, and tests to avoid errors.
