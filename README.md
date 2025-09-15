@@ -13,7 +13,7 @@ The project addresses the following business questions:
 - **Performance:** Identify top performers and underperformers by net PnL.  
 - **Activity:** Track the number of active traders (clients/accounts) per day and week.  
 - **Risk / Account Health:** Identify accounts and clients at risk, including those marked as deleted but still trading.  
-- **Additional Insights:** Analyze trade sizes, symbol losses, and buy/sell distributions.  
+- **Additional Insights:** Analyze trade sizes and symbol losses.
 
 ---
 
@@ -73,23 +73,33 @@ All test failures are logged and provide evidence for data inconsistencies.
 
 A **Power BI dashboard** was built to visualize key metrics:
 
-1. **Top Clients by Net PnL**  
-   - **X-axis:** Net PnL  
-   - **Y-axis:** Client Id (`dim_client`)  
+1. **Total PnL:**
+    - Shows the total net profit and loss for the selected period.
 
-2. **Symbol Loss by Symbol**  
-   - **X-axis:** Loss (realized PnL + commission)
-   - **Y-axis:** Symbol (`dim_symbol`)  
+2. **Total Volume:**:
+      -  Displays the total trading volume.
 
-3. **Average Trade Size per Symbol**  
-   - **X-axis:** Symbol  
-   - **Y-axis:** Average trade volume in USD  
+3. **Total PnL per Month:**:
+      - A line chart that tracks the trend of total net PnL over time.
 
-4. **Buy vs Sell Distribution**  
-   - **Values:** Count of trades  
-   - **Legend:** Trade side (`BUY` / `SELL`)  
+4. **Average Trade Size by Symbol:**
+    -  Compares the average trade size across different trading symbols.
 
-<img width="1289" height="716" alt="image" src="https://github.com/user-attachments/assets/d8e93684-9da2-4935-9694-2772ca6a6d8a" />
+5. **Top 10 Clients by Net PnL:**
+     -  Ranks the top 10 clients by their total net profit and loss.
+
+6. **Loss per Symbol:**
+    - Visualizes the total loss (realized PnL + commission) for each trading symbol.
+
+7. **Daily Active Clients:**  
+   - A line chart that tracks the number of unique active clients on a daily basis.
+
+8. **Weekly Active Clients:**
+   - A line chart that displays the number of unique active clients per week. The tooltip shows the number of active accounts for a given week number.
+
+9. **Top Clients by Equity Drawdown:**
+   - A table that provides a detailed list of individual trades from accounts that have been marked as deleted. The table includes the trade **date**, **account_sk**, and **client_sk**, which is a key tool for risk investigation.
+
 
 
 ---
@@ -107,7 +117,7 @@ A **Power BI dashboard** was built to visualize key metrics:
 
 ## **Architecture**
 
-
+<img width="3840" height="309" alt="Untitled diagram _ Mermaid Chart-2025-09-14-011320" src="https://github.com/user-attachments/assets/09680236-646c-4d42-8285-0ecb2d20ecdc" />
 
 ## **How to Run**
 
@@ -169,44 +179,27 @@ You can now explore the dashboards, visuals, and reports using the available fac
 ## Notes
    - Follow the directory structure for models, seeds, and tests to avoid errors.
 
-### **Architecture**
-
-<img width="1682" height="311" alt="image" src="https://github.com/user-attachments/assets/bb59da87-1a6d-4b5c-b7ac-880b4ab1bf3f" />
-
-
-
 # Analysis Output
 
-**Client Performance & Profitability**
-The platform's profitability is highly concentrated among a small number of clients. The Top 5 Clients by Net PnL chart clearly shows that client C0038 is the top performer, with a net PnL of over $339K. This indicates that a significant portion of the total profit comes from a handful of high-volume or highly successful traders. This presents a potential risk; any change in their trading behavior could have a large impact on overall performance.
+**Market & Asset Behavior**
+  - **Trade Volume:** The analysis shows a well-balanced market with a total volume of $81,14K. The distribution between buy and sell orders is nearly even, which suggests a healthy, two-sided market with active participation on both sides, a positive sign for liquidity.
+  - **Average Trade Size:** Shows significant differences in trade value across various assets. GER40 and US30 have the largest average trade sizes, at **$67.93** and **$90.94** respectively. This suggests traders may be using larger capital or feel more confident when trading these specific index CFDs.
+  - **Loss per Symbol:** Shows that while some assets are profitable, others contribute to the platform's overall loss. Symbols like **GBP/USD** ($-18,62K) and **ETHUSD** ($-80,63K) show significant losses.
 
-<img width="584" height="451" alt="image" src="https://github.com/user-attachments/assets/a559f401-4f41-4b22-99eb-6a2b85c04e0b" />
+**Risk and Compliance Insights**
+ - **Equity Dradown:** The Clients with the largest equity drawdown chart is a crucial risk indicator. It identifies clients with the most significant capital losses. The top clients by drawdown are **C0028** ($1.62M), **C0000** ($1.58M), and **C0025** ($1.58M), which signals significant **risk** in these accounts.
 
-
-**Trade Characteristics & Volume**
-The Trade Volume Share: Buy vs Sell pie chart reveals that trading activity is nearly balanced between buy and sell orders. Buy volume is $900.00 (49.34%), and sell volume is $924.00 (50.66%). This balanced distribution suggests a healthy, two-sided market with active participants on both long and short positions, rather than a strong one-way bias.
-
-<img width="592" height="591" alt="image" src="https://github.com/user-attachments/assets/2f15bc0f-200b-4a9f-9a6c-7afc8ac5185b" />
-
-
-**Asset Trading Behavior**
-The Average Trade Size by Symbol chart highlights significant differences in the value of trades for various assets. GER40 and US30 have the largest average trade sizes, at $67.93 and $60.94, respectively. This suggests that traders are either more confident or are using larger capital when trading these specific index CFDs.
-
-<img width="600" height="285" alt="image" src="https://github.com/user-attachments/assets/5eb3233c-2651-40f8-989c-b11103d1fb96" />
+<img width="1195" height="666" alt="image" src="https://github.com/user-attachments/assets/c79bf6e5-77ad-4e37-94fe-b76e6da9c1b5" />
 
 
-In contrast, assets like EUR/USD and USD/JPY have some of the lowest average trade sizes, at $25.65 and $30.50. While these are often highly liquid pairs, their lower average trade size may indicate that traders are taking smaller positions or are being more cautious with them.
-
-   - Ensure all environment variables are correctly set before running dbt.
-   - Monetary values in dashboards are in USD.
 
 # Summary Insights
 
-- Profitability is highly concentrated. A significant portion of the total profit comes from a handful of clients. The top client, C0038, is a major contributor, making the platform's overall performance heavily reliant on a small group of high-volume traders.
+- Profitability is highly concentrated. A significant portion of the total profit comes from a handful of high-volume clients, making the platform's overall performance heavily reliant on a small group of traders.
 
-- Market activity is well-balanced. The even split between buy and sell volumes ($900.00 vs. $924.00) suggests a healthy and active market. This indicates that traders are actively participating on both sides of the market, a positive sign for liquidity.
+- Market activity is well-balanced. The nearly even split between buy and sell volumes suggests a healthy and active market, where traders are participating on both sides.
 
-- Trading behavior varies by asset. The average trade size is not consistent across all symbols. Traders are committing larger capital on instruments like GER40 and US30, which may indicate greater confidence or a preference for trading indices. Conversely, forex pairs like EUR/USD show a lower average trade size, suggesting traders might be taking more cautious positions on those assets.
+- Trading behavior varies by asset. The average trade size is not consistent across all symbols. Traders are committing larger capital on instruments like **GER40** and **US30**, which may indicate greater confidence or a preference for trading indices.
 
 # Challenges Faced
 
@@ -224,5 +217,8 @@ During the development of the analytics workflow, several challenges were encoun
 **Environment & Deployment**
 - Handling dbt profiles securely with environment variables was essential to avoid exposing credentials.
 - Ensuring the project could be run reproducibly on another machine required detailed “How to Run” instructions.
+  
 
 **Outcome:** Each challenge was addressed with a combination of dbt transformations, testing, and clear documentation, resulting in a robust, reproducible, and insightful analytics workflow ready for management reporting.
+
+Daniel Junges
