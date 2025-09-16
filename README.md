@@ -65,7 +65,6 @@ All test failures are logged and provide evidence for data inconsistencies.
 - **Symbol Normalization:** Symbols are standardized using `symbols_ref`.  
 - **Sign Conventions:**  
   - Realized PnL and commissions are additive for net PnL calculations.  
-  - Buy/Sell side values are standardized as `BUY` or `SELL`.
 
 ---
 
@@ -197,8 +196,6 @@ You can now explore the dashboards, visuals, and reports using the available fac
 # Summary Insights
 
 - Profitability is highly concentrated. A significant portion of the total profit comes from a handful of high-volume clients, making the platform's overall performance heavily reliant on a small group of traders.
-
-- Market activity is well-balanced. The nearly even split between buy and sell volumes suggests a healthy and active market, where traders are participating on both sides.
 
 - Trading behavior varies by asset. The average trade size is not consistent across all symbols. Traders are committing larger capital on instruments like **GER40** and **US30**, which may indicate greater confidence or a preference for trading indices.
 
